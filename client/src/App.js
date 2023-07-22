@@ -4,9 +4,29 @@ import { MainLayout } from './style/Layout';
 import Orb from './componet/Orb';
 import Navigation from './Navigation/Navigation';
 import { useMemo, useState } from 'react';
+import Dashboard from './componet/dashBoard/Dashboard';
+import Income from './componet/income/Income';
+import Expense from './componet/Expenses/Expense';
+
 
 function App() {
   const [active , setActive] = useState(1);
+
+   const Display = () =>{
+    switch(active){
+      case 1: 
+            return <Dashboard/>
+      case 2: 
+            return <Dashboard/>
+      case 3:  
+            return <Income/>
+      case 4:
+            return <Expense/>
+      default:
+        return <Dashboard/>
+    }
+   }
+
   const OrbMemo = useMemo(()=>{
      return <Orb/>
   },[])
@@ -18,7 +38,7 @@ function App() {
       <MainLayout>
       <Navigation active ={active} setActive= {setActive} />
       <main>
-
+         {Display()}
       </main>
       </MainLayout>
     </AppStyled>
