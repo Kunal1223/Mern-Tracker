@@ -18,19 +18,19 @@ export const GlobalProvider = ({children}) => {
             .catch((err) =>{
                 setError(err.response.data.message)
             })
-        getIncomes()
+        getIncomes();
     }
 
     
     const getIncomes = async () => {
-        const response = await axios.get(`${BASE_URL}get-incomes`)
+        const response = await axios.get(`${BASE_URL}get-income`)
         setIncomes(response.data)
         console.log(response.data)
     }
 
     const deleteIncome = async (id) => {
         const res  = await axios.delete(`${BASE_URL}delete-income/${id}`)
-        getIncomes()
+        getIncomes();
     }
 
     const totalIncome = () => {
@@ -41,7 +41,9 @@ export const GlobalProvider = ({children}) => {
 
         return totalIncome;
     }
-  //calculate incomes
+
+
+  //calculate Expenses from here 
   const addExpense = async (income) => {
     const response = await axios.post(`${BASE_URL}add-expense`, income)
         .catch((err) =>{
@@ -51,7 +53,7 @@ export const GlobalProvider = ({children}) => {
 }
 
 const getExpenses = async () => {
-    const response = await axios.get(`${BASE_URL}get-expenses`)
+    const response = await axios.get(`${BASE_URL}get-expense`)
     setExpenses(response.data)
     console.log(response.data)
 }

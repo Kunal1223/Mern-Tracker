@@ -52,8 +52,8 @@ const AppStyled = styled.div`
     flex: 1;
     background: rgba(252, 246, 249, 0.78);
     border: 3px solid #FFFFFF;
-    backdrop-filter: blur(4.5px);
-    border-radius: 32px;
+    backdrop-filter: blur(15px);
+    border-radius: 12px;
     overflow-x: hidden;
     &::-webkit-scrollbar{
       width: 0;
