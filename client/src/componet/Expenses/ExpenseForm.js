@@ -7,8 +7,8 @@ import Button from '../Button';
 import { plus } from '../../utils/Icon';
 
 
-function Form() {
-    const {addIncome, getIncomes, error, setError} = useGlobalContext()
+function ExpenseForm() {
+    const {addExpense, error, setError} = useGlobalContext()
     const [inputState, setInputState] = useState({
         title: '',
         amount: '',
@@ -26,7 +26,7 @@ function Form() {
 
     const handleSubmit = e => {
         e.preventDefault()
-        addIncome(inputState)
+        addExpense(inputState)
         setInputState({
             title: '',
             amount: '',
@@ -37,23 +37,25 @@ function Form() {
     }
 
     return (
-        <FormStyled onSubmit={handleSubmit}>
+        <ExpenseFormStyled onSubmit={handleSubmit}>
             {error && <p className='error'>{error}</p>}
             <div className="input-control">
                 <input 
                     type="text" 
                     value={title}
                     name={'title'} 
-                    placeholder="Salary Title"
-                    onChange={handleInput('title')} autoComplete='NEW'
+                    placeholder="Expense Title"
+                    onChange={handleInput('title')}
+                    autoComplete='new'
                 />
             </div>
             <div className="input-control">
                 <input value={amount}  
                     type="text" 
                     name={'amount'} 
-                    placeholder={'Salary Amount'}
-                    onChange={handleInput('amount')} autoComplete='NEW'
+                    placeholder={'Expense Amount'}
+                    onChange={handleInput('amount')} 
+                    autoComplete='new'
                 />
             </div>
             <div className="input-control">
@@ -64,28 +66,29 @@ function Form() {
                     dateFormat="dd/MM/yyyy"
                     onChange={(date) => {
                         setInputState({...inputState, date: date})
-                    }} autoComplete='NEW'
+                    }}
+                    autoComplete='new'
                 />
             </div>
             <div className="selects input-control">
                 <select required value={category} name="category" id="category" onChange={handleInput('category')}>
-                    <option value=""  disabled >Select Option</option>
-                    <option value="salary">Salary</option>
-                    <option value="freelancing">Freelancing</option>
-                    <option value="investments">Investiments</option>
-                    <option value="stocks">Stocks</option>
-                    <option value="bitcoin">Bitcoin</option>
-                    <option value="bank">Bank Transfer</option>  
-                    <option value="youtube">Youtube</option>  
+                    <option value="" disabled >Select Option</option>
+                    <option value="education">Education</option>
+                    <option value="groceries">Groceries</option>
+                    <option value="health">Health</option>
+                    <option value="subscriptions">Subscriptions</option>
+                    <option value="takeaways">Takeaways</option>
+                    <option value="clothing">Clothing</option>  
+                    <option value="travelling">Travelling</option>  
                     <option value="other">Other</option>  
                 </select>
             </div>
             <div className="input-control">
-                <textarea name="description" value={description} placeholder='Add A Reference' id="description" cols="30" rows="4" onChange={handleInput('description')} autoComplete='NEW'></textarea>
+                <textarea name="description" value={description} placeholder='Add A Reference' id="description" cols="30" rows="4" onChange={handleInput('description')}></textarea>
             </div>
             <div className="submit-btn">
                 <Button 
-                    name={'Add Income'}
+                    name={'Add Expense'}
                     icon={plus}
                     bPad={'.8rem 1.6rem'}
                     bRad={'30px'}
@@ -93,21 +96,21 @@ function Form() {
                     color={'#fff'}
                 />
             </div>
-        </FormStyled>
+        </ExpenseFormStyled>
     )
 }
 
 
-const FormStyled = styled.form`
+const ExpenseFormStyled = styled.form`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     input, textarea, select{
         font-family: inherit;
         font-size: inherit;
         outline: none;
         border: none;
-        padding: .5rem 1rem;
+        padding: .5rem .5rem;
         border-radius: 5px;
         border: 2px solid #fff;
         background: transparent;
@@ -144,4 +147,4 @@ const FormStyled = styled.form`
         }
     }
 `;
-export default Form
+export default ExpenseForm

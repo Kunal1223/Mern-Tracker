@@ -15,7 +15,7 @@ const ExpenseSchema = new moongose.Schema({
     },
     type:{
         type: String,
-        default:'income'
+        default:'expense'
     },
 
     date:{
