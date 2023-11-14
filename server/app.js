@@ -6,8 +6,11 @@ const cors = require("cors")
 env.config();
 app.use(cors());
 app.use(express.json());
-require('./db/conn');
 
+app.use(cors({ }))
+
+
+require('./db/conn');
 const PORT = process.env.PORT;
 
 readdirSync('./routes').map((route) => app.use('/api/v1' , require('./routes/' + route)));
